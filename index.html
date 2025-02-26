@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageFX Prompt Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ImageFX Prompt Generator</h1>
+        
+        <div class="generator-form">
+            <div class="input-group">
+                <label for="subject">Main Subject:</label>
+                <input type="text" id="subject" value="Beautiful tall chubby woman with thick curves and subtle muscle definition" readonly>
+            </div>
+
+            <div class="input-group">
+                <label for="nationality">Nationality:</label>
+                <select id="nationality" onchange="updateSubject()">
+                    <option value="japanese">Japanese</option>
+                    <option value="korean">Korean</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="malay">Malay</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="style">Photography Style:</label>
+                <select id="style" onchange="handleOtherOption(this)">
+                    <option value="photorealistic">Photorealistic</option>
+                    <option value="cinematic">Cinematic</option>
+                    <option value="editorial">Editorial</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="fashion">Fashion Photography</option>
+                    <option value="sports">Sports Photography</option>
+                    <option value="documentary">Documentary</option>
+                    <option value="glamour">Glamour</option>
+                    <option value="high-end fashion">High-end Fashion</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="street photography">Street Photography</option>
+                    <option value="fine art">Fine Art</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherStyle" placeholder="Enter your own style" class="other-input" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="lighting">Lighting:</label>
+                <select id="lighting" onchange="handleOtherOption(this)">
+                    <option value="studio lighting">Studio Lighting</option>
+                    <option value="natural sunlight">Natural Sunlight</option>
+                    <option value="dramatic lighting">Dramatic Lighting</option>
+                    <option value="rim lighting">Rim Lighting</option>
+                    <option value="golden hour">Golden Hour</option>
+                    <option value="backlit">Backlit</option>
+                    <option value="split lighting">Split Lighting</option>
+                    <option value="butterfly lighting">Butterfly Lighting</option>
+                    <option value="rembrandt lighting">Rembrandt Lighting</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherLighting" placeholder="Enter your own lighting" class="other-input" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="pose">Pose Type:</label>
+                <select id="pose" onchange="handleOtherOption(this)">
+                    <option value="standing">Standing Naturally</option>
+                    <option value="sitting">Sitting Casually</option>
+                    <option value="walking">Walking</option>
+                    <option value="leaning">Leaning Against Wall</option>
+                    <option value="candid">Candid Moment</option>
+                    <option value="profile">Side Profile</option>
+                    <option value="looking away">Looking Away</option>
+                    <option value="reading">Reading</option>
+                    <option value="laughing">Laughing</option>
+                    <option value="thinking">Thoughtful Expression</option>
+                    <option value="working">Working at Desk</option>
+                    <option value="drinking">Drinking Coffee</option>
+                    <option value="browsing phone">Browsing Phone</option>
+                    <option value="window shopping">Window Shopping</option>
+                    <option value="crossing street">Crossing Street</option>
+                    <option value="waiting">Waiting for Train</option>
+                    <option value="enjoying meal">Enjoying Meal</option>
+                    <option value="writing">Writing</option>
+                    <option value="listening">Listening to Music</option>
+                    <option value="stretching">Stretching</option>
+                    <option value="cooking">Cooking</option>
+                    <option value="gardening">Gardening</option>
+                    <option value="painting">Painting</option>
+                    <option value="dancing">Dancing</option>
+                    <option value="exercising">Exercising</option>
+                    <option value="meditating">Meditating</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="typing">Typing</option>
+                    <option value="talking">Talking on Phone</option>
+                    <option value="studying">Studying</option>
+                    <option value="relaxing">Relaxing</option>
+                    <option value="sleeping">Sleeping</option>
+                    <option value="running">Running</option>
+                    <option value="cycling">Cycling</option>
+                    <option value="swimming">Swimming</option>
+                    <option value="yoga">Doing Yoga</option>
+                    <option value="playing instrument">Playing Instrument</option>
+                    <option value="drawing">Drawing</option>
+                    <option value="reading book">Reading Book</option>
+                    <option value="using laptop">Using Laptop</option>
+                    <option value="taking photos">Taking Photos</option>
+                    <option value="climbing stairs">Climbing Stairs</option>
+                    <option value="looking at view">Looking at View</option>
+                    <option value="ordering food">Ordering Food</option>
+                    <option value="paying">Paying at Counter</option>
+                    <option value="browsing">Browsing Store</option>
+                    <option value="trying clothes">Trying Clothes</option>
+                    <option value="window gazing">Gazing Out Window</option>
+                    <option value="commuting">Commuting</option>
+                    <option value="greeting">Greeting Someone</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherPose" placeholder="Enter your own pose" class="other-input" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="clothing">Clothing Style:</label>
+                <select id="clothing" onchange="handleOtherOption(this)">
+                    <option value="casual wear">Casual Wear</option>
+                    <option value="business attire">Business Attire</option>
+                    <option value="smart casual">Smart Casual</option>
+                    <option value="streetwear">Streetwear</option>
+                    <option value="traditional">Traditional Japanese Clothing</option>
+                    <option value="summer dress">Summer Dress</option>
+                    <option value="winter coat">Winter Coat</option>
+                    <option value="formal suit">Formal Suit</option>
+                    <option value="minimalist">Minimalist Style</option>
+                    <option value="vintage">Vintage Fashion</option>
+                    <option value="denim">Denim Outfit</option>
+                    <option value="sweater">Sweater and Jeans</option>
+                    <option value="blazer">Business Casual Blazer</option>
+                    <option value="sundress">Sundress</option>
+                    <option value="leather jacket">Leather Jacket</option>
+                    <option value="cardigan">Cardigan</option>
+                    <option value="turtleneck">Turtleneck</option>
+                    <option value="polo">Polo Shirt</option>
+                    <option value="flowing dress">Flowing Dress</option>
+                    <option value="kimono">Modern Kimono</option>
+                    <option value="yukata">Yukata</option>
+                    <option value="office wear">Office Wear</option>
+                    <option value="athleisure">Athleisure</option>
+                    <option value="cocktail dress">Cocktail Dress</option>
+                    <option value="evening gown">Evening Gown</option>
+                    <option value="trench coat">Trench Coat</option>
+                    <option value="pea coat">Pea Coat</option>
+                    <option value="blouse">Blouse and Skirt</option>
+                    <option value="jumpsuit">Jumpsuit</option>
+                    <option value="romper">Romper</option>
+                    <option value="maxi dress">Maxi Dress</option>
+                    <option value="midi dress">Midi Dress</option>
+                    <option value="mini dress">Mini Dress</option>
+                    <option value="pants suit">Pants Suit</option>
+                    <option value="skirt suit">Skirt Suit</option>
+                    <option value="crop top">Crop Top</option>
+                    <option value="high waist">High Waist Pants</option>
+                    <option value="palazzo">Palazzo Pants</option>
+                    <option value="culottes">Culottes</option>
+                    <option value="wrap dress">Wrap Dress</option>
+                    <option value="shirt dress">Shirt Dress</option>
+                    <option value="pencil skirt">Pencil Skirt</option>
+                    <option value="a-line skirt">A-line Skirt</option>
+                    <option value="pleated skirt">Pleated Skirt</option>
+                    <option value="tunic">Tunic</option>
+                    <option value="sweater dress">Sweater Dress</option>
+                    <option value="hoodie">Hoodie</option>
+                    <option value="bomber jacket">Bomber Jacket</option>
+                    <option value="denim jacket">Denim Jacket</option>
+                    <option value="utility jacket">Utility Jacket</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherClothing" placeholder="Enter your own clothing" class="other-input" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="background">Background Setting:</label>
+                <select id="background" onchange="handleOtherOption(this)">
+                    <option value="cafe">Coffee Shop</option>
+                    <option value="park">City Park</option>
+                    <option value="street">City Street</option>
+                    <option value="office">Modern Office</option>
+                    <option value="home">Cozy Home Interior</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="library">Library</option>
+                    <option value="beach">Beach</option>
+                    <option value="garden">Japanese Garden</option>
+                    <option value="subway">Subway Station</option>
+                    <option value="bookstore">Bookstore</option>
+                    <option value="market">Local Market</option>
+                    <option value="art gallery">Art Gallery</option>
+                    <option value="museum">Museum</option>
+                    <option value="botanical garden">Botanical Garden</option>
+                    <option value="rooftop">Rooftop Garden</option>
+                    <option value="shopping mall">Shopping Mall</option>
+                    <option value="train station">Train Station</option>
+                    <option value="airport">Airport Terminal</option>
+                    <option value="university">University Campus</option>
+                    <option value="temple">Traditional Temple</option>
+                    <option value="shrine">Shinto Shrine</option>
+                    <option value="zen garden">Zen Garden</option>
+                    <option value="bamboo forest">Bamboo Forest</option>
+                    <option value="cherry blossom">Cherry Blossom Park</option>
+                    <option value="tea house">Traditional Tea House</option>
+                    <option value="hotel lobby">Luxury Hotel Lobby</option>
+                    <option value="fashion store">Fashion Boutique</option>
+                    <option value="department store">Department Store</option>
+                    <option value="riverside">Riverside Walk</option>
+                    <option value="bridge">Historic Bridge</option>
+                    <option value="alley">Traditional Alley</option>
+                    <option value="courtyard">Inner Courtyard</option>
+                    <option value="terrace">Restaurant Terrace</option>
+                    <option value="skyline">City Skyline</option>
+                    <option value="observatory">Observatory Deck</option>
+                    <option value="aquarium">Aquarium</option>
+                    <option value="concert hall">Concert Hall</option>
+                    <option value="theater">Theater</option>
+                    <option value="cinema">Cinema</option>
+                    <option value="spa">Luxury Spa</option>
+                    <option value="fitness center">Fitness Center</option>
+                    <option value="dance studio">Dance Studio</option>
+                    <option value="art studio">Art Studio</option>
+                    <option value="photography studio">Photography Studio</option>
+                    <option value="recording studio">Recording Studio</option>
+                    <option value="greenhouse">Greenhouse</option>
+                    <option value="conservatory">Conservatory</option>
+                    <option value="waterfront">Waterfront</option>
+                    <option value="pier">Pier</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherBackground" placeholder="Enter your own background" class="other-input" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="quality">Quality Enhancers:</label>
+                <select id="quality" multiple onchange="handleOtherQuality()">
+                    <option value="8k uhd">8K UHD</option>
+                    <option value="high detail">High Detail</option>
+                    <option value="sharp focus">Sharp Focus</option>
+                    <option value="professional">Professional</option>
+                    <option value="masterpiece">Masterpiece</option>
+                    <option value="award winning">Award Winning</option>
+                    <option value="stunning">Stunning</option>
+                    <option value="beautiful">Beautiful</option>
+                    <option value="amazing">Amazing</option>
+                    <option value="insane details">Insane Details</option>
+                    <option value="intricate">Intricate</option>
+                    <option value="elegant">Elegant</option>
+                    <option value="highly detailed">Highly Detailed</option>
+                    <option value="professional lighting">Professional Lighting</option>
+                    <option value="professional color grading">Professional Color Grading</option>
+                    <option value="color accurate">Color Accurate</option>
+                    <option value="color graded">Color Graded</option>
+                    <option value="perfect composition">Perfect Composition</option>
+                    <option value="rule of thirds">Rule of Thirds</option>
+                    <option value="golden ratio">Golden Ratio</option>
+                    <option value="perfect framing">Perfect Framing</option>
+                    <option value="studio quality">Studio Quality</option>
+                    <option value="professional photography">Professional Photography</option>
+                    <option value="magazine quality">Magazine Quality</option>
+                    <option value="advertisement quality">Advertisement Quality</option>
+                    <option value="commercial photography">Commercial Photography</option>
+                    <option value="fashion photography">Fashion Photography</option>
+                    <option value="editorial photography">Editorial Photography</option>
+                    <option value="professional retouching">Professional Retouching</option>
+                    <option value="perfect skin">Perfect Skin</option>
+                    <option value="flawless">Flawless</option>
+                    <option value="pristine">Pristine</option>
+                    <option value="crystal clear">Crystal Clear</option>
+                    <option value="tack sharp">Tack Sharp</option>
+                    <option value="perfect focus">Perfect Focus</option>
+                    <option value="depth of field">Beautiful Depth of Field</option>
+                    <option value="bokeh">Beautiful Bokeh</option>
+                    <option value="natural lighting">Natural Lighting</option>
+                    <option value="soft lighting">Soft Lighting</option>
+                    <option value="dramatic lighting">Dramatic Lighting</option>
+                    <option value="cinematic lighting">Cinematic Lighting</option>
+                    <option value="volumetric lighting">Volumetric Lighting</option>
+                    <option value="ray tracing">Ray Tracing</option>
+                    <option value="global illumination">Global Illumination</option>
+                    <option value="subsurface scattering">Subsurface Scattering</option>
+                    <option value="ambient occlusion">Ambient Occlusion</option>
+                    <option value="HDR">HDR</option>
+                    <option value="raw photo">RAW Photo</option>
+                    <option value="unedited">Unedited</option>
+                    <option value="photorealistic">Photorealistic</option>
+                    <option value="hyperrealistic">Hyperrealistic</option>
+                    <option value="other">Other...</option>
+                </select>
+                <input type="text" id="otherQuality" placeholder="Enter additional quality enhancers (comma-separated)" class="other-input" style="display: none;">
+            </div>
+
+            <div class="control-buttons">
+                <button onclick="generatePrompt()">Generate Prompt</button>
+                <button onclick="generateRandomPrompt()" class="random-btn">Random Prompt</button>
+            </div>
+
+            <div class="output-section">
+                <label for="result">Generated Prompt:</label>
+                <textarea id="result" readonly rows="6"></textarea>
+                <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>Made with <span class="heart">❤️</span> in my bathroom © 2025 androidsk17i</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 800px;
+    width: 95%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.generator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input, select, textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+select[multiple] {
+    height: 200px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+select[multiple] option {
+    padding: 8px;
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+select[multiple] option:checked {
+    background: #3498db linear-gradient(0deg, #3498db 0%, #3498db 100%);
+    color: white;
+}
+
+select[multiple] option:hover {
+    background-color: #f0f2f5;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.output-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 100px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem auto;
+        padding: 1rem;
+        width: 90%;
+    }
+
+    .control-buttons {
+        flex-direction: column;
+    }
+
+    .control-buttons button {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    select[multiple] {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input, select, textarea, button {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+}
+
+.custom-input {
+    margin-top: 0.5rem;
+    display: none;
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+}
+
+.custom-input::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.control-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.random-btn {
+    background-color: #2ecc71;
+}
+
+.random-btn:hover {
+    background-color: #27ae60;
+}
+
+select option {
+    padding: 0.5rem;
+}
+
+.other-input {
+    margin-top: 0.5rem;
+    display: none;
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.other-input::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.other-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.other-input[style*="display: block"] {
+    opacity: 1;
+    height: auto;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.heart {
+    display: inline-block;
+    animation: pulse 1.5s ease infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} 
